@@ -18,6 +18,9 @@ if has('win32')
   unlet s:path
 endif
 
+if has('win32')
+  set runtimepath+=$HOME/.vim,$HOME/.vim/after
+endif
 "--------OS別の設定--------
 " ファイルを読込む時にトライする文字エンコードの順序を確定する。漢字コード自
 " 動判別機能を利用する場合には別途iconv.dllが必要。iconv.dllについては
@@ -160,7 +163,7 @@ set wildmenu
 set formatoptions+=mM
 
 " 自動補完登録
-source ~/vimfiles/abbreviate.vim
+source ~/.vim/abbreviate.vim
 
 "--------システム--------
 " バックアップファイルを作成しない
@@ -206,10 +209,10 @@ let g:lightline = { 'colorscheme': 'nighted' }
 if has('vim_starting')
   set nocompatible               " be iMproved
 
-  set runtimepath+=~/vimfiles/bundle/neobundle.vim
+  set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 " Required:
-call neobundle#rc(expand('~/vimfiles/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
@@ -234,6 +237,8 @@ NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Chiel92/vim-autoformat'
+
+call neobundle#end()
 
 filetype plugin indent on     " required!
 

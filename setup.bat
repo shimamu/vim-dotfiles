@@ -1,4 +1,4 @@
 rem Set up script for Windows.
 
-copy /-Y .vimrc %HOME%\_vimrc
-copy /-Y .gvimrc %HOME%\_gvimrc
+mklink %HOME%\_vimrc %HOME%\vim-dotfiles\.vimrc
+mklink %HOME%\_gvimrc %HOME%\vim-dotfiles\.gvimrc 

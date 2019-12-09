@@ -66,6 +66,8 @@ endif
 " }}}
 " Plugin for file system explorer {{{
 Plugin 'scrooloose/nerdtree'
+" Customize <CR> to remain in tree window after opening.
+let NERDTreeCustomOpenArgs={'file': {'where': 'p', 'stay': 1}, 'dir': {}}
 " }}}
 " }}}
 " Post-process {{{
@@ -161,6 +163,16 @@ set list
 " Strings to use in 'list' mode and for the :list command.
 set listchars=tab:\|\ ,extends:<,trail:-,eol:$
 
+" }}}
+" Characters with East Asian Width Class Ambiguous {{{
+" Only effective when 'encoding' is "utf-8" or another Unicode encoding.
+" Tells Vim what to do with characters with East Asian Width Class
+" Ambiguous).
+"     There are currently two possible values:
+"     "single": Use the same width as characters in US-ASCII.  This is
+"               expected by most users.
+"     "double": Use twice the width of ASCII characters.
+set ambiwidth=double
 " }}}
 " }}}
 " Indentng {{{

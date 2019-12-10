@@ -24,12 +24,9 @@ set mousehide
 " Font {{{
 if has('win32')
   " This is a list of fonts which will be used for the GUI version of Vim.
-  set guifont=Consolas:h10 guifontwide=MeiryoKe_Gothic:h10
+  set guifont=Ricty_Diminished:h12
   " Number of pixel lines inserted between characters.
   set linespace=4
-  if has('kaoriya')
-    set ambiwidth=auto
-  endif
 endif
 " }}}
 " }}}

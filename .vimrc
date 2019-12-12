@@ -69,6 +69,9 @@ Plugin 'scrooloose/nerdtree'
 " Customize <CR> to remain in tree window after opening.
 let NERDTreeCustomOpenArgs={'file': {'where': 'p', 'stay': 1}, 'dir': {}}
 " }}}
+" Plugin for tagbar {{{
+Plugin 'majutsushi/tagbar'
+" }}}
 " }}}
 " Post-process {{{
 " All of your Plugins must be added before the following line
@@ -259,6 +262,9 @@ set wrapscan
 
 " }}}
 " Key mapping {{{
+
+" Toggle Tagbar.
+nmap <F8> :TagbarToggle<CR>
 
 " Stop the highlighting for the 'hlsearch' option.
 nnoremap <silent> <C-l> :noh<CR><C-l>

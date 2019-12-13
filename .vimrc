@@ -269,6 +269,9 @@ nmap <F8> :TagbarToggle<CR>
 " Stop the highlighting for the 'hlsearch' option.
 nnoremap <silent> <C-l> :noh<CR><C-l>
 
+" Begin a new line below the cursor.
+nnoremap <silent> <SPACE> o<ESC>
+
 " }}}
 " Abbreviate {{{
 source ~/.vim/abbreviate.vim

@@ -17,7 +17,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins {{{
 " Keep Plugin commands between vundle#begin/end.
 " Plugins for markdown {{{
-Plugin 'tpope/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'violetyk/iikanji-markdown.vim'
 Plugin 'kannokanno/previm'
 Plugin 'tyru/open-browser.vim'
 if has('win32')
@@ -71,6 +72,9 @@ let NERDTreeCustomOpenArgs={'file': {'where': 'p', 'stay': 1}, 'dir': {}}
 " }}}
 " Plugin for tagbar {{{
 Plugin 'majutsushi/tagbar'
+" }}}
+" Plugin for an interface to WEB APIs. {{{
+Plugin 'mattn/webapi-vim'
 " }}}
 " }}}
 " Post-process {{{
@@ -299,6 +303,21 @@ au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
 " }}}
 " }}}
+
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/build/markdown2ctags/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
 
 " vim:set ts=8 sts=2 sw=2 tw=0:
 " vim:set foldmethod=marker:

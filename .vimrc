@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins {{{
 " Keep Plugin commands between vundle#begin/end.
 " Plugins for markdown {{{
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'violetyk/iikanji-markdown.vim'
 Plugin 'kannokanno/previm'

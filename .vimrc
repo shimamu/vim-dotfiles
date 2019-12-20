@@ -77,6 +77,15 @@ Plugin 'majutsushi/tagbar'
 " Plugin for an interface to WEB APIs. {{{
 Plugin 'mattn/webapi-vim'
 " }}}
+" Plugin for extended f, F, t and T key mappings. {{{
+Plugin 'rhysd/clever-f.vim'
+let g:clever_f_across_no_line=1
+let g:clever_f_smart_case=1
+let g:clever_f_use_migemo=1
+let g:clever_f_fix_key_direction=1
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
+" }}}
 " }}}
 " Post-process {{{
 " All of your Plugins must be added before the following line

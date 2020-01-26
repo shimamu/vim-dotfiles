@@ -18,10 +18,11 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " Plugins for markdown {{{
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'violetyk/iikanji-markdown.vim'
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'violetyk/iikanji-markdown.vim'
 Plugin 'kannokanno/previm'
 Plugin 'tyru/open-browser.vim'
+Plugin 'shimamu/vim-markdown-assist'
 if has('win32')
   let g:previm_disable_default_css = 1
   let g:previm_custom_css_path = '~/.vim/css/markdown.css'
@@ -305,6 +306,9 @@ au BufNewFile,BufRead *.js  noremap <silent> = :Autoformat<CR>
 
 " Open current buffer in browser.
 au BufNewFile,BufRead *.md nnoremap <silent> <C-p> :PrevimOpen<CR>
+
+" No text wrapping.
+au Filetype markdown setl textwidth=0
 
 " }}}
 " Ruby {{{

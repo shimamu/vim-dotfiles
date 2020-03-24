@@ -218,6 +218,12 @@ colorscheme ithd
 "        filename [+=-] (path) - VIM
 set title
 
+" This option will be used for the window title when exiting 
+" Vim if the original title cannot be restored.
+" Use this option to avoid display 'Thanks for flying Vim'(or
+" in Japanese) at title after exiting Vim.
+set titleold=
+
 " }}}
 " Line number {{{
 

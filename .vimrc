@@ -97,6 +97,10 @@ let g:clever_f_fix_key_direction=1
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
 
+" ++ Plugin for automatically close parenthese (), {}, "",... {{{3
+" ------------------------------------------------------------------------------
+Plugin 'cohama/lexima.vim'
+
 " + Post-process {{{2
 " ------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line

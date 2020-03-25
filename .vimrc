@@ -1,25 +1,29 @@
+" vim:set ts=8 sts=2 sw=2 tw=0:
+" vim:set foldmethod=marker:
 scriptencoding utf-8
 set encoding=utf-8
 
-" Vundle plugins {{{
-" Pre-process {{{
+" Vundle plugins {{{1
+" ==============================================================================
+" + Pre-process {{{2
+" ------------------------------------------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
+" Keep Plugin commands between vundle#begin/end.
 call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" }}}
-" Plugins {{{
-" Keep Plugin commands between vundle#begin/end.
-" Plugins for markdown {{{
+" + Plugins {{{2
+" ------------------------------------------------------------------------------
+" ++ Plugins for markdown {{{3
+" ------------------------------------------------------------------------------
 Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
-"Plugin 'violetyk/iikanji-markdown.vim'
 Plugin 'kannokanno/previm'
 Plugin 'tyru/open-browser.vim'
 Plugin 'shimamu/vim-markdown-assist'
@@ -27,8 +31,9 @@ if has('win32')
   let g:previm_disable_default_css = 1
   let g:previm_custom_css_path = '~/.vim/css/markdown.css'
 endif
-" }}}
-" Plugin for configurable status line {{{
+
+" ++ Plugin for configurable status line {{{3
+" ------------------------------------------------------------------------------
 Plugin 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'PaperColor_light',
@@ -42,8 +47,9 @@ let g:lightline = {
 function! FixModeStatus()
   return IMStatus('Jpfix')
 endfunction
-" }}}
-" Plugin for controling Input Method {{{
+
+" ++ Plugin for controling Input Method {{{3
+" ------------------------------------------------------------------------------
 Plugin 'fuenor/im_control.vim'
 if has('win32')
   " Action mode for 'Japanese input fixed mode'
@@ -66,19 +72,23 @@ elseif has('unix')
     return ''
   endfunction
 endif
-" }}}
-" Plugin for file system explorer {{{
+
+" ++ Plugin for file system explorer {{{3
+" ------------------------------------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 " Customize <CR> to remain in tree window after opening.
 let NERDTreeCustomOpenArgs={'file': {'where': 'p', 'stay': 1}, 'dir': {}}
-" }}}
-" Plugin for tagbar {{{
+
+" ++ Plugin for tagbar {{{3
+" ------------------------------------------------------------------------------
 Plugin 'majutsushi/tagbar'
-" }}}
-" Plugin for an interface to WEB APIs. {{{
+
+" ++ Plugin for an interface to WEB APIs. {{{3
+" ------------------------------------------------------------------------------
 Plugin 'mattn/webapi-vim'
-" }}}
-" Plugin for extended f, F, t and T key mappings. {{{
+
+" ++ Plugin for extended f, F, t and T key mappings. {{{3
+" ------------------------------------------------------------------------------
 Plugin 'rhysd/clever-f.vim'
 let g:clever_f_across_no_line=1
 let g:clever_f_smart_case=1
@@ -86,204 +96,128 @@ let g:clever_f_use_migemo=1
 let g:clever_f_fix_key_direction=1
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
-" }}}
-" }}}
-" Post-process {{{
+
+" + Post-process {{{2
+" ------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" }}}
-" }}}
-" General {{{
-" Cursor {{{
 
-" When a bracket is inserted, briefly jump to the matching one.
+
+" General {{{1
+" ==============================================================================
+" + Cursor {{{2
+" ------------------------------------------------------------------------------
 set showmatch
-
-" Highlight the screen line of the cursor with CursorLine |hl-CursorLine|.
 set cursorline
 
-" }}}
-" Backup {{{
-
-" Do not make a backup before overwriting a file.
+" + Backup {{{2
+" ------------------------------------------------------------------------------
 set nobackup
 
-" }}}
-" History {{{
+" + History {{{2
+" ------------------------------------------------------------------------------
+set noundofile
 
-" When on, Vim automatically saves undo history to an undo file when
-" writing a buffer to a file, and restores undo history from the same
-" file on buffer read.
-:set noundofile
+" + Swap file {{{2
+" ------------------------------------------------------------------------------
+set directory=~/.vim/tmp
 
-" }}}
-" Swap file {{{
-
-" List of directory names for the swap file, separated with commas.
-if has('win32')
-  set directory=~/tmp
-elseif has('unix')
-  set directory=~/.vim/tmp
-endif
-
-" }}}
-" Runtime path {{{
+" + Runtime path {{{2
+" ------------------------------------------------------------------------------
 " Add .vim directories to runtimepath.
 if has('win32')
   set runtimepath+=$HOME/.vim,$HOME/.vim/after
 endif
-" }}}
-" Backspace {{{
-" Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode.
-set backspace=indent,eol,start
-" }}}
-" }}}
-" Screen {{{
-" Layout {{{
-" Window wrapping {{{
 
-" Lines longer than the width of the window will wrap and displaying
-" continues on the next line.
+" + Abbreviate {{{2
+" ------------------------------------------------------------------------------
+source ~/.vim/abbreviate.vim
+
+" + Backspace {{{2
+" ------------------------------------------------------------------------------
+set backspace=indent,eol,start
+
+
+" Screen {{{1
+" ==============================================================================
+" + Layout {{{2
+" ------------------------------------------------------------------------------
+" ++ Window wrapping {{{3
+" ------------------------------------------------------------------------------
 set wrap
 
-"}}}
-" Text wrapping {{{
-
-" Maximum width of text that is being inserted.
+" ++ Text wrapping {{{3
+" ------------------------------------------------------------------------------
 set textwidth=80
-
-" Apply text wrapping to Japanese.
 set formatoptions+=mM
 
-" }}}
-" Tab {{{
-"
-" Number of spaces that a <Tab> in the file counts for.
+" ++ Tab {{{3
+" ------------------------------------------------------------------------------
 set tabstop=4
-
-" Number of spaces to use for each step of (auto)indent.
 set shiftwidth=4
-
-" Number of spaces that a <Tab> counts for while performing editing
-" operations, like inserting a <Tab> or using <BS>.
 set softtabstop=0
-
-" Use the appropriate number of spaces to insert a <Tab>.
 set expandtab
 
-"}}}
-" Non-display characters {{{
-
-" Show tabs as CTRL-I is displayed, display $ after end of line.
+" ++ Non-display characters {{{3
+" ------------------------------------------------------------------------------
 set list
-
-" Strings to use in 'list' mode and for the :list command.
 set listchars=tab:\|\ ,extends:<,trail:-,eol:$
 
-" }}}
-" Characters with East Asian Width Class Ambiguous {{{
-" Only effective when 'encoding' is "utf-8" or another Unicode encoding.
-" Tells Vim what to do with characters with East Asian Width Class
-" Ambiguous).
-"     There are currently two possible values:
-"     "single": Use the same width as characters in US-ASCII.  This is
-"               expected by most users.
-"     "double": Use twice the width of ASCII characters.
+" ++ Characters with East Asian Width Class Ambiguous {{{3
+" ------------------------------------------------------------------------------
 set ambiwidth=double
-" }}}
-" }}}
-" Indentng {{{
 
-" Copy indent from current line when starting a new line (typing <CR>
-" in Insert mode or when using the "o" or "O" command).
+" + Indentng {{{2
+" ------------------------------------------------------------------------------
 set autoindent
 
-" }}}
-" }}}
-" Color {{{
- 
-" When this option is set, the syntax with this name is loaded.
-syntax on
 
-" Color scheme.
+" Color {{{1
+" ==============================================================================
+syntax on
 colorscheme ithd
 
-" }}}
-" Window {{{
-" Title {{{
 
-" When on, the title of the window will be set to the value of
-" 'titlestring' (if it is not empty), or to:
-"        filename [+=-] (path) - VIM
+" Window {{{1
+" ==============================================================================
+" + Title {{{2
+" ------------------------------------------------------------------------------
 set title
-
-" This option will be used for the window title when exiting 
-" Vim if the original title cannot be restored.
-" Use this option to avoid display 'Thanks for flying Vim'(or
-" in Japanese) at title after exiting Vim.
 set titleold=
 
-" }}}
-" Line number {{{
-
-" Print the line number in front of each line.
+" + Line number {{{2
+" ------------------------------------------------------------------------------
 set number
 
-" }}}
-" Status line {{{
-" Basic {{{
-
-" The value of this option influences when the last window will have
-" a status line:
-"     2: always
+" + Status line {{{2
+" ------------------------------------------------------------------------------
+" ++ Basic {{{3
+" ------------------------------------------------------------------------------
 set laststatus=2
 
-" }}}
-" Ruler {{{
-
-" Show the line and column number of the cursor position.
+" ++ Ruler {{{3
+" ------------------------------------------------------------------------------
 set ruler
 
-" }}}
-" }}}
-" Command line {{{
-
-" Number of screen lines to use for the command-line.
-" * Use gvimrc when using gvim in Windows.
+" + Command line {{{2
+" ------------------------------------------------------------------------------
 set cmdheight=1
-
-" Show (partial) command in the last line of the screen.
 set showcmd
-
-" When 'wildmenu' is on, command-line completion operates in an
-" enhanced mode.
 set wildmenu
 
-" }}}
-" }}}
-" Search {{{
 
-" While typing a search command, show where the pattern, as it was typed so far,
-" matches.  The matched string is highlighted.  If the pattern
+" Search {{{1
+" ==============================================================================
 set incsearch
-
-" When there is a previous search pattern, highlight all its matches.
 set hlsearch
-
-" Ignore case in search patterns.
 set ignorecase
-
-" Override the 'ignorecase' option if the search pattern contains
-" upper case characters.
 set smartcase
-
-" Searches wrap around the end of the file.
 set wrapscan
 
-" }}}
-" Key mapping {{{
 
+" Key mapping {{{1
+" ==============================================================================
 " Toggle Tagbar.
 nmap <F8> :TagbarToggle<CR>
 
@@ -293,36 +227,24 @@ nnoremap <silent> <C-l> :noh<CR><C-l>
 " Begin a new line below the cursor.
 nnoremap <silent> <SPACE> o<ESC>
 
-" }}}
-" Abbreviate {{{
-source ~/.vim/abbreviate.vim
-" }}}
-" Filetypes {{{
-" HTML {{{
 
+" Filetypes {{{1
+" ==============================================================================
+" + HTML {{{2
+" ------------------------------------------------------------------------------
 au BufNewFile,BufRead *.html  set nowrap tabstop=2 shiftwidth=2
 
-" }}}
-" Javascript {{{
-
+" + Javascript {{{2
+" ------------------------------------------------------------------------------
 au BufNewFile,BufRead *.js  noremap <silent> = :Autoformat<CR>
 
-" }}}
-" Markdown {{{
-
+" + Markdown {{{2
+" ------------------------------------------------------------------------------
 " Open current buffer in browser.
 au BufNewFile,BufRead *.md nnoremap <silent> <C-p> :PrevimOpen<CR>
 
 " No text wrapping.
 au Filetype markdown setl textwidth=0
-
-" }}}
-" Ruby {{{
-
-au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
-
-" }}}
-" }}}
 
 let g:tagbar_type_markdown = {
     \ 'ctagstype': 'markdown',
@@ -339,5 +261,7 @@ let g:tagbar_type_markdown = {
     \ 'sort': 0,
 \ }
 
-" vim:set ts=8 sts=2 sw=2 tw=0:
-" vim:set foldmethod=marker:
+" + Ruby {{{2
+" ------------------------------------------------------------------------------
+au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
+

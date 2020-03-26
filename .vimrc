@@ -101,6 +101,9 @@ map , <Plug>(clever-f-repeat-back)
 " ------------------------------------------------------------------------------
 Plugin 'cohama/lexima.vim'
 
+" ++ Plugin for colorscheme {{{3
+Plugin 'crusoexia/vim-monokai'
+" }}}
 " + Post-process {{{2
 " ------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -180,7 +183,15 @@ set autoindent
 " Color {{{1
 " ==============================================================================
 syntax on
-colorscheme ithd
+colorscheme monokai
+
+" Make background transparent in terminal(rxvt).
+if &term =~ 'rxvt'
+  highlight Normal ctermbg=NONE guibg=NONE
+  highlight NonText ctermbg=NONE guibg=NONE
+  highlight SpecialKey ctermbg=NONE guibg=NONE
+  highlight EndOfBuffer ctermbg=NONE guibg=NONE
+endif
 
 
 " Window {{{1

@@ -183,10 +183,11 @@ set autoindent
 " Color {{{1
 " ==============================================================================
 syntax on
-colorscheme monokai
+colorscheme ithd
 
 " Make background transparent in terminal(rxvt).
 if &term =~ 'rxvt'
+  colorscheme monokai
   highlight Normal ctermbg=NONE guibg=NONE
   highlight NonText ctermbg=NONE guibg=NONE
   highlight SpecialKey ctermbg=NONE guibg=NONE

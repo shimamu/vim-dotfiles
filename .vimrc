@@ -118,6 +118,16 @@ filetype plugin indent on    " required
 set showmatch
 set cursorline
 
+" cursor shape.
+if has('vim_starting')
+    " insert mode (bar cursor shape)
+    let &t_SI .= "\e[6 q"
+    " normal mode (block cursor shape)
+    let &t_EI .= "\e[2 q"
+    " replace mode (underline cursor shape)
+    let &t_SR .= "\e[4 q"
+endif
+
 " + Backup {{{2
 " ------------------------------------------------------------------------------
 set nobackup

@@ -1,8 +1,10 @@
 " vim:set ts=8 sts=2 sw=2 tw=0:
 " vim:set foldmethod=marker:
+
+" Encoding {{{1
 scriptencoding utf-8
 set encoding=utf-8
-
+" }}}
 " Vundle plugins {{{1
 " ==============================================================================
 " + Pre-process {{{2

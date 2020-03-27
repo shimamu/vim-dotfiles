@@ -38,7 +38,7 @@ endif
 " ------------------------------------------------------------------------------
 Plugin 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor_light',
+      \ 'colorscheme': (&term =~ 'rxvt') ? 'wombat' : 'PaperColor_light',
       \ 'active': {
       \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fixMode']]
       \ },

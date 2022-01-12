@@ -4,6 +4,7 @@
 " Encoding {{{1
 scriptencoding utf-8
 set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 " }}}
 " Vundle plugins {{{1
 " ==============================================================================
@@ -38,7 +39,7 @@ endif
 " ------------------------------------------------------------------------------
 Plugin 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': (&term =~ 'rxvt') ? 'wombat' : 'PaperColor_light',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fixMode']]
       \ },
@@ -168,8 +169,8 @@ set wrap
 
 " ++ Text wrapping {{{3
 " ------------------------------------------------------------------------------
-set textwidth=80
-set formatoptions+=mM
+"set textwidth=80
+"set formatoptions+=mM
 
 " ++ Tab {{{3
 " ------------------------------------------------------------------------------
@@ -195,7 +196,8 @@ set autoindent
 " Color {{{1
 " ==============================================================================
 syntax on
-colorscheme ithd
+"colorscheme ithd
+colorscheme monokai
 
 " Make background transparent in terminal(rxvt).
 if &term =~ 'rxvt'
@@ -262,6 +264,10 @@ nnoremap <silent> <SPACE> o<ESC>
 " + HTML {{{2
 " ------------------------------------------------------------------------------
 au BufNewFile,BufRead *.html  set nowrap tabstop=2 shiftwidth=2
+
+" + CSS {{{2
+" ------------------------------------------------------------------------------
+au BufNewFile,BufRead *.css,*.scss  set nowrap tabstop=2 shiftwidth=2
 
 " + Javascript {{{2
 " ------------------------------------------------------------------------------
